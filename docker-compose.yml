@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  twitter-web:
+    build: .
+    container_name: "twitter-php-web"
+    volumes:
+      - "./htdocs/:/var/www/html"
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+
+  twitter-db:
+    image: mysql:8
+    container_name: "twitter-php-db"
+    volumes:
+      - ./db:/var/lib/mysql
+      - ./config/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=twitter-php
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user
+    ports:
+      - "3306:3306"
