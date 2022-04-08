@@ -9,7 +9,7 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - mysql
+      - twitter-db
 
   twitter-db:
     image: mysql:8
@@ -19,7 +19,7 @@ services:
       - ./config/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=twitter-php
+      - MYSQL_DATABASE=twitter
       - MYSQL_USER=user
       - MYSQL_PASSWORD=user
     ports:
