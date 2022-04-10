@@ -28,13 +28,20 @@ if (!empty($_POST)) {
     <dl>
         <dt>ニックネーム<span class="required">必須</span></dt>
         <dd>
-            <input type="text" name="name" size="35" maxlength="255" />
+            <input type="text" name="name" size="35" maxlength="255" value="<?php
+            echo htmlspecialchars($_POST['name'], ENT_QUOTES);
+            ?>" />
             <?php if ($error['name'] == 'blank'): ?>
                 <p class="error">* ニックネームを入力してください</p>
             <?php endif; ?>
         </dd>
         <dt>メールアドレス<span class="required">必須</span></dt>
-        <dd><input type="text" name="email" size="35" maxlength="255" /></dd>
+        <dd>
+            <input type="text" name="email" size="35" maxlength="255"
+            value="<?php echo htmlspecialchars($_POST['email'], ENT_QUOTES); ?>"
+             />
+             <?php?>
+        </dd>
         <dt>パスワード<span class="required">必須</span></dt>
         <dd><input type="password" name="password" size="10" maxlength="20"
         /></dd>
